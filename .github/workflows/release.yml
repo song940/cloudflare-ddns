@@ -21,8 +21,8 @@ jobs:
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: commit
-        name: nightly-release-${{ steps.date.outputs.date }}
+        tag_name: release
+        name: release-${{ github.event.repository.updated_at}}
         files: bin/*
         draft: false
 
