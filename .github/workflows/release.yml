@@ -19,7 +19,7 @@ jobs:
     - name: Build
       run: make build
     - name: Set current date as env variable
-      run: echo "{date}={$(date +'%Y-%m-%d')}" >> $GITHUB_STATE
+      run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_STATE
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
