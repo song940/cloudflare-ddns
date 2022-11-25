@@ -1,4 +1,4 @@
-name: Go
+name: Release
 
 on:
   push:
@@ -21,9 +21,8 @@ jobs:
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: latest
-        name: latest
-        body: "Latest Release"
+        tag_name: nightly-tag-${{ steps.date.outputs.date }}
+        name: nightly-release-${{ steps.date.outputs.date }}
         files: bin/*
         draft: false
 
