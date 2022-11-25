@@ -18,11 +18,13 @@ jobs:
         go-version: 1.19.1
     - name: Build
       run: make build
+    - name: Set current date as env variable
+      run: echo "{date}={$(date +'%Y-%m-%d')}" >> $GITHUB_STATE
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: release
-        name: release-${{ github.event.repository.updated_at}}
+        tag_name: nightly-tag-${{ env.date }}
+        name: nightly-release-${{ env.date }}
         files: bin/*
         draft: false
 
