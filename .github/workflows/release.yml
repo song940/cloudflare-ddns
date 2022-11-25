@@ -1,0 +1,29 @@
+name: Go
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Golang
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19.1
+    - name: Build
+      run: make build
+    - name: Upload Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: latest
+        name: latest
+        body: "Latest Release"
+        files: bin/*
+        draft: false
+
